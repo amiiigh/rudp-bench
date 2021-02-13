@@ -56,7 +56,8 @@ server.on('message', async (message, remoteInfo) => {
 
 console.log('UDP server started on port 8123')
 
-createEncryptedConnection(config.UDP_CLIENT_ADDRESS, config.UDP_CLIENT_PORT, KEY)
+// createEncryptedConnection(config.UDP_CLIENT_ADDRESS, config.UDP_CLIENT_PORT, KEY)
+createEncryptedConnection(config.UDP_CLIENT_ADDRESS, config.UDP_CLIENT_PORT)
 
 let connection = getConnection(config.UDP_CLIENT_ADDRESS, config.UDP_CLIENT_PORT)
 connection.on('connect', () => {

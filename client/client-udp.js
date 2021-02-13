@@ -63,7 +63,8 @@ server.on('message', async (message, remoteInfo) => {
   })
 })
 
-createEncryptedConnection(config.UDP_SERVER_ADDRESS, config.UDP_SERVER_PORT, KEY)
+// createEncryptedConnection(config.UDP_SERVER_ADDRESS, config.UDP_SERVER_PORT, KEY)
+createEncryptedConnection(config.UDP_SERVER_ADDRESS, config.UDP_SERVER_PORT)
 let connection = getConnection(config.UDP_SERVER_ADDRESS, config.UDP_SERVER_PORT)
 connection.send(Buffer.from('HELLO'))
 // let a = setInterval(() => {
