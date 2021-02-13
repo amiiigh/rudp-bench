@@ -50,6 +50,7 @@ PacketSender.prototype.send = function (packet) {
   try {
     let buffer = packet.toBuffer();
     if (this._sessionKey) {
+      print('sending enc')
       buffer = this._encrypt(packet.toBuffer())
     }
 

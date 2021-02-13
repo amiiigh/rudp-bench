@@ -155,6 +155,7 @@ Connection.prototype._cleanClose = function() {
 
 Connection.prototype._decrypt = function(encryptedPacketWithIV) {
   try {
+    print('trying to DECRYPT')
     let iv = encryptedPacketWithIV.slice(0,16);
     let key = this._packetSender._sessionKey.slice(0,32);
     let encryptedPacket = encryptedPacketWithIV.slice(16);
