@@ -5,10 +5,7 @@ let fs = require('fs')
 let file = fs.readFileSync(config.TEST_FILE)
 const fileSize = file.length
 
-const SERVER_PORT = 8123
-const SERVER_ADDRESS = '127.0.0.1'
-
-const LOCAL_PORT = 8124
+const LOCAL_PORT = config.UDP_CLIENT_PORT
 const KEY = 'Z7Dga2kTwErRuLVb7va_RAyVdXTWMHVbRBEEVtwl4YU='
 let _connections = {}
 let total = 0
@@ -66,8 +63,8 @@ server.on('message', async (message, remoteInfo) => {
   })
 })
 
-createEncryptedConnection(SERVER_ADDRESS, SERVER_PORT, KEY)
-let connection = getConnection(SERVER_ADDRESS, SERVER_PORT)
+createEncryptedConnection(config.UDP_SERVER_ADDRESS, config.UDP_SERVER_PORT, KEY)
+let connection = getConnection(config.UDP_SERVER_ADDRESS, config.UDP_SERVER_PORT)
 connection.send(Buffer.from('HELLO'))
 // let a = setInterval(() => {
 //   connection.send(Buffer.from('hello'))

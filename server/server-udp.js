@@ -3,9 +3,7 @@ let dgram = require('dgram')
 let rudp = require('../rudp')
 var fs = require('fs')
 
-const LOCAL_PORT = 8123
-const CLIENT_ADDRESS = '127.0.0.1'
-const CLIENT_PORT = 8124
+const LOCAL_PORT = config.UDP_SERVER_PORT
 const KEY = 'Z7Dga2kTwErRuLVb7va_RAyVdXTWMHVbRBEEVtwl4YU='
 let _connections = {}
 
@@ -58,9 +56,9 @@ server.on('message', async (message, remoteInfo) => {
 
 console.log('UDP server started on port 8123')
 
-createEncryptedConnection(CLIENT_ADDRESS, CLIENT_PORT, KEY)
+createEncryptedConnection(config.UDP_CLIENT_ADDRESS, config.UDP_CLIENT_PORT, KEY)
 
-let connection = getConnection(CLIENT_ADDRESS, CLIENT_PORT)
+let connection = getConnection(config.UDP_CLIENT_ADDRESS, config.UDP_CLIENT_PORT)
 connection.on('connect', () => {
   sendFile(connection)
 })
