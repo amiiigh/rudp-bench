@@ -31,6 +31,9 @@ function Sender(connection, packetSender) {
   this._amIResending = false;
   this._retransmitqueueLock = new Semaphore(1);
 
+  setInterval(() => {
+    this._printCongestionControlInfo()
+  }, 50);
 }
 util.inherits(Sender, EventEmitter);
 
@@ -228,9 +231,9 @@ Sender.prototype._printCongestionControlInfo = function () {
   console.log('current state:',helpers.getKeyByValue(constants.CongestionControl.States, this._currentCongestionControlState))
   console.log('_maxWindowSize:', this._maxWindowSize)
   console.log('_duplicateAckCount:', this._duplicateAckCount)
-  console.log('_slowStartThreshold:', this._slowStartThreshold)
   console.log('_timeoutCount:', this._timeoutCount)
-  console.log('_retransmissionQueue.size:', this._retransmissionQueue.size)
+  console.log('timeout interval:', this._timeoutInterval)
+  console.log('========================================')
 }
 
 Sender.prototype._changeCurrentCongestionControlState = function (newState) {

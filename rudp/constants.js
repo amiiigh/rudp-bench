@@ -30,7 +30,7 @@ module.exports.Retransmission = {
   'ALPHA': 0.125,
   'BETA': 0.25,
   'MAX_NUMBER_OF_RETRANSMISSION': 5,
-  'INITIAL_RETRANSMISSION_INTERVAL': 100
+  'INITIAL_RETRANSMISSION_INTERVAL': 200
 };
 module.exports.CLOSE_WAIT_TIME = 10000;
 module.exports.INITIAL_MAX_WINDOW_SIZE = 64;
@@ -38,4 +38,4 @@ module.exports.MAX_SEQUENCE_NUMBER = 4294967295;
 module.exports.DELAYED_ACK_TIME = 5;
 module.exports.UDP_SAFE_SEGMENT_SIZE = 1400;
 module.exports.CONNECTION_TIMEOUT_INTERVAL = 15000;
-module.exports.SAMPLING_INTERVAL = 50;
+module.exports.SAMPLING_INTERVAL = 100;
